@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using ASampleApp.CosmosDB;
 using Xamarin.Forms;
 
 namespace ASampleApp
@@ -57,14 +58,19 @@ namespace ASampleApp
 
             //point 2
             App.DogRep.AddNewDogPhotoSource(this.FirstEntryText, this.SecondEntryText, this.PhotoSourceEntry);
-
-
+			AddLastDogToCosmosDBAsync();
 			string _lastNameString = App.DogRep.GetLastDog ().Name;
-
 			string _lastNameStringAdd = System.String.Format ("{0} added to the list!", _lastNameString);
 			this.FirstLabel = _lastNameStringAdd;
 
 			return;
+		}
+
+		private async void AddLastDogToCosmosDBAsync()
+		{
+			var myDog = App.DogRep.GetLastDog();
+			var myCosmosDog = DogConverter.ConvertToCosmosDog(myDog);
+			await CosmosDB.CosmosDBService.PostCosmosDogAsync(myCosmosDog);
 		}
 	}
 }

@@ -12,6 +12,8 @@ namespace ASampleApp
 
         public DogListPhotoPage()
         {
+
+
             _dogListView = new ListView();
 
             //DEFINING THE CELL TYPE

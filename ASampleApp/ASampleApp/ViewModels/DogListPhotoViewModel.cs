@@ -15,7 +15,7 @@ namespace ASampleApp
 	public class DogListPhotoViewModel : BaseViewModel
 	{
 
-		ObservableCollection<Dog> _observableCollectionOfDogs;
+		public ObservableCollection<Dog> _observableCollectionOfDogs;
 
         public ICommand DeleteDogFromListCommand { get; set; }
 

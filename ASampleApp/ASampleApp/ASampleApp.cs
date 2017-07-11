@@ -13,10 +13,13 @@ namespace ASampleApp
 
         public static DogRepository DogRep { get; private set; }
 
+        public static DogListPhotoPage MyDogListPhotoPage { get; set; }
+
+
 		public App ()
 		{
 
-            string dbPath = FileAccessHelper.GetLocalFilePath("dog10.db3");
+            string dbPath = FileAccessHelper.GetLocalFilePath("dog16.db3");
             DogRep = new DogRepository(dbPath);
 
 			var applicationStartPage = new FirstPage ();
@@ -37,6 +40,9 @@ namespace ASampleApp
             var myNavigationPage = new NavigationPage(applicationStartPage);
             MainPage = myNavigationPage;
 
+            //Initialize Dog Photo View Page
+            MyDogListPhotoPage = new DogListPhotoPage();
+
             //THIS WILL RUN EACH TIME YOU CHANGE THE DATABASE (ie. changing dbPath)
             IfDogSQLListEmptyThenFill();
 
@@ -54,6 +60,11 @@ namespace ASampleApp
 				{
 					var tempDog = CosmosDB.DogConverter.ConvertToDog(item);
 					App.DogRep.AddNewDogPhotoSource(tempDog.Name, tempDog.FurColor, tempDog.DogPictureSource);
+
+                    //TODO: MW
+                    App.MyDogListPhotoPage.MyViewModel._observableCollectionOfDogs.Add(tempDog);
+
+                       //_observableCollectionOfDogs.Add(item);
 				}
 			}
 

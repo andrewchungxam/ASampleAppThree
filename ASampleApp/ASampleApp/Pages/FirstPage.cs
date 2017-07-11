@@ -28,7 +28,7 @@ namespace ASampleApp
 			_firstLabel = new Label (); //{ Text = "Hello"};
             _firstEntry = new Entry () {Placeholder = "Dog Name"};
             _secondEntry = new Entry() { Placeholder = "Fur color" };
-			_firstButton = new Button () { Text = "Button" };
+			_firstButton = new Button () { Text = "Submit" };
 			_goToDogListButton = new Button () { Text = "Go to Dog List" };
 			_emptyLabel = new Label () { Text = " " };
 
@@ -106,9 +106,14 @@ namespace ASampleApp
 
 		void OnAddDogPhotoListLButtonClicked (object sender, EventArgs e)
 		{
-			//throw new NotImplementedException ();
+            //throw new NotImplementedException ();
+            //Option 1 - creating a new DogListPhotoPage
+            Device.BeginInvokeOnMainThread (()=> Navigation.PushAsync (new DogListPhotoPage()));
 
-			Device.BeginInvokeOnMainThread (()=> Navigation.PushAsync (new DogListPhotoPage()));
+            //TODO - using a static DogListPhotoPage
+            //Option 2 - using a static DogListPhotoPage
+ //           Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(App.MyDogListPhotoPage));
+
 		}
 
 		private void OnAddDogPhotoButtonClicked(object sender, EventArgs e)
