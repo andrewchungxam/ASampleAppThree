@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+
+
+using System;
 namespace ASampleApp.CosmosDB
 {
 	public static class CosmosDBStrings

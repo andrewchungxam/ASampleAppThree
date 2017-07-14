@@ -19,7 +19,7 @@ namespace ASampleApp
 		public FirstPage ()
 		{
 
-            this.Title = "A Sample App";
+            this.Title = "A Sample App Three";
 
 
 			//METHOD#1 non-MVVM
